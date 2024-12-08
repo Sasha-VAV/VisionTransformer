@@ -1,0 +1,11 @@
+pretrained_configs
+Visual-Transformer/pretrained_configs
+Visual-Transformer/draft.py
+data
+.idea
+Visual-Transformer/__pycache__
+wandb
+*.pyc
+**/__pycache__/
+**/*.pyc
+**/*.pyo
