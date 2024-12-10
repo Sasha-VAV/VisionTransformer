@@ -1,22 +1,30 @@
 # Transformer neural network, that choose between dog and cat
 ***
 ## How to launch it?
-- Run command
+- Configure python interpreter
+```shell
+pip install -r requirements.txt
+```
+- Load all the libs
 ```shell
 poetry install
 ```
-- Install wandb
+- Download weights and default images from huggingface
 ```shell
-pip install wandb
+python setup.py
 ```
-- You need to train model,
-or [download weights](https://huggingface.co/Sashavav/dogs_vs_cats_vit/tree/main/dogs_vs_cats4.0/pretrained_configs)
-- Extract downloaded folder in the root folder
-- To replace default photos and set yours,
-you should move to dogs_vs_cats4/dvc4_config/config.py and change
-list_of_images_paths parameter
-- Configure conda 310 env
-- Launch dogs_vs_cats4/\_\_main\_\_.py
+- Download dvc
+```shell
+pip install dvc
+```
+- Install weights and default images
+```shell
+dvc pull
+```
+- Run module
+```shell
+python -m Visual-Transformer
+```
 
 ## How to configure it?
 - Move to dogs_vs_cats4/dvc4_config_config.py and
@@ -26,13 +34,13 @@ read all inline comments, then change all the data
 - Architecture: Visual Transformer
 - Train set size: 24000 images
 - Test set size: 1000 images
-- Max achieved **accuracy**: 99.6
+- Max achieved **accuracy**: 99.7
 
 ## Max accuracy research
 - default LeNet: 74.1
 - default AlexNet: 93.9
 - AlexNet + data augmentation: 95.6
-- Visual Transformer + data augmentation: 99.6
+- Visual Transformer + data augmentation: 99.7
 
 ***
 ## Credits

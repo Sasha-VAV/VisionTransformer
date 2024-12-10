@@ -1,7 +1,6 @@
-pretrained_configs
+data/pretrained_configs
 Visual-Transformer/pretrained_configs
 Visual-Transformer/draft.py
-data
 .idea
 Visual-Transformer/__pycache__
 wandb
@@ -9,3 +8,13 @@ wandb
 **/__pycache__/
 **/*.pyc
 **/*.pyo
+
+small_test
+small_train
+outputs
+/data
+dvc-remote
+
+upload.py
+
+temp
