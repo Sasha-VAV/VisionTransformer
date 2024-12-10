@@ -110,6 +110,10 @@ class Program:
             self.vit.heads = nn.Linear(self.vit.hidden_dim, self.num_classes)
             if self.path_to_pretrained_params is not None:
                 torch.save(self.vit.state_dict(), self.path_to_nn_params)
+            try:
+                self.vit.load_state_dict(torch.load(self.path_to_nn_params, weights_only=True))
+            except FileNotFoundError:
+                torch.save(self.vit.state_dict(), self.path_to_nn_params)
 
         if self.is_train or self.is_test:
             self.train_data_loader, self.test_data_loader = load_data(
