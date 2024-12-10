@@ -12,4 +12,4 @@ def convert_to_abs_path(abs_path: str, path: str) -> str:
     ):
         return path
     else:
-        return abs_path + "\\" + path
+        return abs_path + path

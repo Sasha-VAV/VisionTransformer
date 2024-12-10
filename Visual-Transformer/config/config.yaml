@@ -1,6 +1,6 @@
 base:
   modes:
-    train: True # Set True if you want to train model
+    train: False # Set True if you want to train model
     test: True # Set True if you want to run a test to see accuracy
     exec: True # Set True if you want to utilize model with your own images
 
