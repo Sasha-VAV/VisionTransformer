@@ -1,6 +1,6 @@
 import torch
 from torch.utils.data import DataLoader
-from model import ViT
+from .model import ViT
 from tqdm import tqdm
 
 

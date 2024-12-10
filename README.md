@@ -13,10 +13,6 @@ poetry install
 ```shell
 python setup.py
 ```
-- Move directory to correct path
-```shell
-mv temp/dvc-remote ~
-```
 - Download dvc
 ```shell
 pip install dvc
