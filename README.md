@@ -27,8 +27,7 @@ python -m Visual-Transformer
 ```
 
 ## How to configure it?
-- Move to dogs_vs_cats4/dvc4_config_config.py and
-read all inline comments, then change all the data
+- Move to Visual-Transformer/config/config.yaml, read inline documentation and configure it
 
 ## Current stats:
 - Architecture: Visual Transformer
