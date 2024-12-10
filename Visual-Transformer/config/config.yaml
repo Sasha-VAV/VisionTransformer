@@ -1,0 +1,64 @@
+base:
+  modes:
+    train: True # Set True if you want to train model
+    test: True # Set True if you want to run a test to see accuracy
+    exec: True # Set True if you want to utilize model with your own images
+
+  model:
+    device: 'cuda' # Select 'cuda' or 'cpu', if cuda is not enable, then you will have cpu
+    img_size: 384
+    number_of_classes: 2
+    batch_size: 100
+    path_to_nn_params: "pretrained_configs/dvc.pth"
+    is_use_torch_vit: True # Set True if you want to use torch vit
+    torch_vit:
+      path_to_pretrained_params: None
+      # Leave None, if you params are already converted to new model structure
+    vit: # You can edit my own vit settings
+      patch_size: 16
+      in_channels: 3 # Do not change, if you use RGB channels
+      embed_dim: 768
+      depth: 12
+      num_heads: 12
+      mlp_ratio: 4
+      drop_rate: 0.0
+      qkv_bias: False
+
+run:
+  dataset:
+    path_to_train_data: "D:\\Backup\\Less Important\\My programs\\Git\\Dog_vs_Cats_neural_network_2.0\\Train"
+    path_to_test_data: "D:\\Backup\\Less Important\\My programs\\Git\\Dog_vs_Cats_neural_network_2.0\\Test"
+    is_use_augmentation: True
+    is_shuffle_train_data: True
+    num_of_train_samples: -1 # Leave -1 if you want to use all the samples
+    num_of_test_samples: -1 # Leave -1 if you want to use all the samples
+
+  training:
+    number_of_train_epochs: 1
+    is_refresh_train_data: True # Set True if you want to refresh data after every epoch
+
+  run:
+    images: # You can set here custom images, that you want to predict
+      [
+        "data/img/cat1.jpg",
+        "data/img/dog1.jpg",
+        "data/img/dog2.jpg",
+        "data/img/corgi.jpg",
+        "data/img/corgi1.jpg",
+        "data/img/cat2.jpg",
+        "data/img/cat3.jpg",
+        "data/img/samoed.jpg",
+      ]
+    classes:
+      [
+        "cat",
+        "dog"
+      ]
+
+  logging:
+    print_n: 6 # How many times per epoch you want to save and print information
+    is_use_wandb: False # Set true if you want to use wandb
+    wandb: # You can leave default values
+      learning_rate: 0.001
+      architecture: "ViT"
+      dataset: "Dogs_vs_Cats_Kaggle"

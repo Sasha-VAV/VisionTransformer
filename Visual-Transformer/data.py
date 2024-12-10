@@ -1,12 +1,7 @@
+import torch
 import torchvision.transforms as transforms
 from PIL import Image
 from torch.utils.data import DataLoader
-from torchvision.datasets import ImageFolder, FGVCAircraft
-from dogs_vs_cats4.dvc4_config import (
-    is_use_build_in_train,
-    is_use_build_in_test,
-    img_size,
-)
 
 
 def load_data(
@@ -18,6 +13,8 @@ def load_data(
     is_augmentation: bool = False,
     is_shuffle_train: bool = True,
     num_workers: int = 0,
+    is_use_build_in_train: bool = False,
+    is_use_build_in_test: bool = False,
 ) -> tuple[DataLoader, DataLoader]:
     """
     Function to load the training and testing data
@@ -29,6 +26,8 @@ def load_data(
     :param is_augmentation: whether to use data augmentation or not
     :param is_shuffle_train: whether to shuffle train data or not
     :param num_workers: number of workers for data loading
+    :param is_use_build_in_train: set True if you want to use torch datasets
+    :param is_use_build_in_test: set True if you want to use torch datasets
     :return: tuple[DataLoader, DataLoader]
     """
     augmented_data_transform = transforms.Compose(
@@ -51,16 +50,26 @@ def load_data(
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
         ]
     )
+    if is_use_build_in_train:
+        # Change build in dataset here:
+        from torchvision.datasets import FGVCAircraft as TrainDataset
+    else:
+        from torchvision.datasets import ImageFolder as TrainDataset
+    if is_use_build_in_test:
+        # Change build in dataset here:
+        from torchvision.datasets import FGVCAircraft as TestDataset
+    else:
+        from torchvision.datasets import ImageFolder as TestDataset
     if path_to_train_data is not None:
         try:
             if is_augmentation:
                 if not is_use_build_in_train:
-                    train_data = ImageFolder(
+                    train_data = TrainDataset(
                         root=path_to_train_data, transform=augmented_data_transform
                     )
                 else:
                     # Replace this string if you want to use build in datasets
-                    train_data = FGVCAircraft(
+                    train_data = TrainDataset(
                         root="data/",
                         split="train",
                         transform=augmented_data_transform,
@@ -75,12 +84,11 @@ def load_data(
                 )
             else:
                 if not is_use_build_in_test:
-                    train_data = ImageFolder(
+                    train_data = TrainDataset(
                         root=path_to_train_data, transform=default_data_transform
                     )
                 else:
-                    # Replace this string if you want to use build in datasets
-                    train_data = FGVCAircraft(
+                    train_data = TrainDataset(
                         root="data/",
                         split="train",
                         transform=default_data_transform,
@@ -101,11 +109,11 @@ def load_data(
     if path_to_test_data is not None:
         try:
             if not is_use_build_in_test:
-                test_data = ImageFolder(
+                test_data = TestDataset(
                     root=path_to_test_data, transform=default_data_transform
                 )
             else:
-                test_data = FGVCAircraft(
+                test_data = TestDataset(
                     root="data/",
                     split="test",
                     transform=default_data_transform,
@@ -125,7 +133,13 @@ def load_data(
     return train_data_loader, test_data_loader
 
 
-def load_image(path: str):
+def load_image(path: str, img_size: int = 224) -> torch.Tensor:
+    """
+    Method to convert image to tensor
+    :param path: path to image
+    :param img_size: size, that image should be resized for
+    :return: tensor that represents image
+    """
     transform = transforms.Compose(
         [
             transforms.Resize(img_size),  # Optional: Resize the image
