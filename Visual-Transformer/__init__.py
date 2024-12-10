@@ -102,7 +102,7 @@ class Program:
         if self.is_use_torch_vit:
             if self.path_to_pretrained_params is not None:
                 self.vit.load_state_dict(
-                    torch.load(self.path_to_pretrained_params, weights_only=True)
+                    torch.load(self.path_to_pretrained_params, weights_only=True, map_location=self.device)
                 )
 
             for param in self.vit.parameters():
@@ -111,7 +111,7 @@ class Program:
             if self.path_to_pretrained_params is not None:
                 torch.save(self.vit.state_dict(), self.path_to_nn_params)
             try:
-                self.vit.load_state_dict(torch.load(self.path_to_nn_params, weights_only=True))
+                self.vit.load_state_dict(torch.load(self.path_to_nn_params, weights_only=True, map_location=self.device))
             except FileNotFoundError:
                 torch.save(self.vit.state_dict(), self.path_to_nn_params)
 
@@ -166,7 +166,7 @@ class Program:
             )
         if self.is_exec:
             self.vit.load_state_dict(
-                torch.load(self.path_to_nn_params, weights_only=True)
+                torch.load(self.path_to_nn_params, weights_only=True, map_location=self.device)
             )
             for s in self.images:
                 self(s)
@@ -187,25 +187,3 @@ class Program:
         except IndexError:
             print(f"Predicted: class with number {predicted}, which is wrong, sorry")
             return -1
-
-
-"""
-
-
-train_model(
-    vit=vit,
-    device=device,
-    train_data_loader=train_data_loader,
-    path_to_nn_params=path_to_nn_params,
-    epochs=num_of_train_epochs,
-    test_data_loader=test_data_loader,
-    is_use_wandb=is_use_wandb,
-    refresh_train_data=is_refresh_train_data,
-    path_to_train_data=path_to_train_data,
-    batch_size=train_batch_size,
-    save_n_times_per_epoch=print_n_times_per_epoch,
-    max_number_of_train_samples=max_number_of_train_samples,
-    number_of_validation_samples=number_of_validation_samples,
-    max_number_of_test_samples=max_number_of_test_samples,
-)
-"""

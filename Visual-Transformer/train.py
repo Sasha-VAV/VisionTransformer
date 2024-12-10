@@ -104,7 +104,7 @@ def train_model(
             loss = criterion(outputs, labels)
             loss.backward()
             optimizer.step()
-            # scheduler.step()
+            scheduler.step()
 
             # print statistics
             running_loss += loss.item()
