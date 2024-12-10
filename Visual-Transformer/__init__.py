@@ -102,7 +102,11 @@ class Program:
         if self.is_use_torch_vit:
             if self.path_to_pretrained_params is not None:
                 self.vit.load_state_dict(
-                    torch.load(self.path_to_pretrained_params, weights_only=True, map_location=self.device)
+                    torch.load(
+                        self.path_to_pretrained_params,
+                        weights_only=True,
+                        map_location=self.device,
+                    )
                 )
 
             for param in self.vit.parameters():
@@ -111,7 +115,13 @@ class Program:
             if self.path_to_pretrained_params is not None:
                 torch.save(self.vit.state_dict(), self.path_to_nn_params)
             try:
-                self.vit.load_state_dict(torch.load(self.path_to_nn_params, weights_only=True, map_location=self.device))
+                self.vit.load_state_dict(
+                    torch.load(
+                        self.path_to_nn_params,
+                        weights_only=True,
+                        map_location=self.device,
+                    )
+                )
             except FileNotFoundError:
                 torch.save(self.vit.state_dict(), self.path_to_nn_params)
 
@@ -166,7 +176,9 @@ class Program:
             )
         if self.is_exec:
             self.vit.load_state_dict(
-                torch.load(self.path_to_nn_params, weights_only=True, map_location=self.device)
+                torch.load(
+                    self.path_to_nn_params, weights_only=True, map_location=self.device
+                )
             )
             for s in self.images:
                 self(s)
