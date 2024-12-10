@@ -5,3 +5,5 @@ tqdm~=4.67.1
 einops~=0.8.0
 omegaconf~=2.3.0
 hydra-core
+
+huggingface-hub~=0.26.3

@@ -1,4 +1,4 @@
-pretrained_configs
+data/pretrained_configs
 Visual-Transformer/pretrained_configs
 Visual-Transformer/draft.py
 .idea
@@ -13,3 +13,6 @@ small_test
 small_train
 outputs
 /data
+dvc-remote
+
+upload.py
