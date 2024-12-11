@@ -1,13 +1,30 @@
 # Transformer neural network, that choose between dog and cat
 ***
 ## How to launch it?
-- Configure python interpreter
+- I highly recommend to use conda env with python 310, you can get conda [here](https://www.anaconda.com/download)
+```shell
+conda create -n conda310 python=3.10
+```
+- Then you need to activate it
+```shell
+conda activate conda310
+```
+- Configure python interpreter, I highly recommend to use python 3.10, 
+but you can edit Visual-Transformer/\_\_main__.py and remove raising version compatibility error
 ```shell
 pip install -r requirements.txt
+```
+- You need to install poetry
+```shell
+conda install poetry
 ```
 - Load all the libs
 ```shell
 poetry install
+```
+- Download huggingface_hub library
+```shell
+pip install huggingface_hub
 ```
 - Download weights and default images from huggingface
 ```shell

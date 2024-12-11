@@ -5,7 +5,7 @@ base:
     exec: True # Set True if you want to utilize model with your own images
 
   model:
-    device: 'cpu' # Select 'cuda' or 'cpu', if cuda is not enable, then you will have cpu
+    device: 'cuda' # Select 'cuda' or 'cpu', if cuda is not enable, then you will have cpu
     img_size: 384
     number_of_classes: 2
     batch_size: 100
