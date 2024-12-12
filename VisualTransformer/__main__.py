@@ -13,7 +13,7 @@ def main(cfg: DictConfig) -> None:
         raise Exception('Requires python 3.10')
     abspath = str(Path(__file__).parent.parent.resolve()) + "/"
     program = Program(cfg, abspath)
-    program.run()  # Run program, options are located in Visual-Transformer/config/config.yaml
+    program.run()  # Run program, options are located in VisualTransformer/config/config.yaml
     path_to_your_image = (
         "data/img/corgi.jpg"  # Change to the image that you want to classify
     )

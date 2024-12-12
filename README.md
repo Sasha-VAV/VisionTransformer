@@ -28,7 +28,7 @@ pip install huggingface_hub
 ```
 - Download weights and default images from huggingface
 ```shell
-python setup.py
+python download_data.py
 ```
 - Download dvc
 ```shell
@@ -40,7 +40,7 @@ dvc pull
 ```
 - Run module
 ```shell
-python -m Visual-Transformer
+python -m VisualTransformer
 ```
 
 ## How to configure it?

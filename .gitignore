@@ -1,8 +1,8 @@
 data/pretrained_configs
-Visual-Transformer/pretrained_configs
-Visual-Transformer/draft.py
+VisualTransformer/pretrained_configs
+VisualTransformer/draft.py
 .idea
-Visual-Transformer/__pycache__
+VisualTransformer/__pycache__
 wandb
 *.pyc
 **/__pycache__/
@@ -16,5 +16,5 @@ outputs
 dvc-remote
 
 upload.py
-
+**draft.py
 temp
