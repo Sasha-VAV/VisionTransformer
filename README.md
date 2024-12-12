@@ -2,7 +2,7 @@
 ***
 ## You can import this module via
 ```shell
-pip install VisualTransformer
+pip install VisionTransformer
 ```
 ## How to use it?
 1. Configure config yaml file to work with model
@@ -10,25 +10,26 @@ pip install VisualTransformer
    1. run - use for training and testing model
    2. \_\_call__ - use to classify images and utilize model
 Example of the code:
+
 ```python
-import VisualTransformer as ViT
+import VisionTransformer as ViT
 import hydra
 from pathlib import Path
 
 
 @hydra.main(config_path="path_to_your_config", config_name="name_of_your_config")
 def main(cfg):
-    abspath = str(Path(__file__).parent.resolve()) + "/"  # Get absolute path, if your config works with relative paths
-    model = ViT.Program(cfg, abspath)  # Create object of class Program to work with transformer
+   abspath = str(Path(__file__).parent.resolve()) + "/"  # Get absolute path, if your config works with relative paths
+   model = ViT.Program(cfg, abspath)  # Create object of class Program to work with transformer
 
-    model.run()  # Run config, that you wrote to train and test model
+   model.run()  # Run config, that you wrote to train and test model
 
-    arr = ["path1", "path2", "path3"]
-    print(model(arr, False))  # Utilize model
+   arr = ["path1", "path2", "path3"]
+   print(model(arr, False))  # Utilize model
 
 
 if __name__ == "__main__":
-    main()
+   main()
 ```
 ***
 ## Credits

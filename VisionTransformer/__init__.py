@@ -95,7 +95,7 @@ class Program:
 
             wandb.init(
                 # set the wandb project where this run will be logged
-                project="VisualTransformer",
+                project="VisionTransformer",
                 config=self.wandb_config,
             )
 

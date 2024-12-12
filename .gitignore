@@ -1,8 +1,8 @@
 data/pretrained_configs
-VisualTransformer/pretrained_configs
-VisualTransformer/draft.py
+VisionTransformer/pretrained_configs
+VisionTransformer/draft.py
 .idea
-VisualTransformer/__pycache__
+VisionTransformer/__pycache__
 wandb
 *.pyc
 **/__pycache__/
