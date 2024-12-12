@@ -2,7 +2,7 @@
 ***
 ## You can import this module via
 ```shell
-pip install VisionTransformer
+pip install vtransformer
 ```
 ## How to use it?
 1. Configure config yaml file to work with model

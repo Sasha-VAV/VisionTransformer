@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "VisionTransformer"
+name = "vtransformer"
 version = "0.1.0"
 description = ""
 authors = ["Sashavav <vav110011@gmail.com>"]

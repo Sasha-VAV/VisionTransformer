@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='VisionTransformer',
+    name='vtransformer',
     py_modules=['VisionTransformer'],
     version='0.1.0',
     description='Visual transformer module with training, testing, and executing as CV model',
