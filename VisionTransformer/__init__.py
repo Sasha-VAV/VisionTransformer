@@ -95,7 +95,7 @@ class Program:
 
             wandb.init(
                 # set the wandb project where this run will be logged
-                project="Visual-Transformer",
+                project="VisionTransformer",
                 config=self.wandb_config,
             )
 
@@ -183,19 +183,26 @@ class Program:
             for s in self.images:
                 self(s)
 
-    def __call__(self, s: str) -> int:
+    def __call__(self, img_paths: str | list[str], is_print=True) -> list[int]:
         """
         Method to predict image class
-        :param s: path to image
+        :param img_paths: path or list of paths to image
+        :param is_print: set true, if you want to print information about each image
         :return: class number
         """
-        img_tensor = load_image(convert_to_abs_path(self.abs_path, s), self.img_size)
-        img_tensor = img_tensor.to(device=self.device)
-        output = self.vit(img_tensor)
-        _, predicted = torch.max(output, 1)
-        try:
-            print("Predicted: ", " ".join(f"{self.classes[predicted.item()]:5s}"))
-            return predicted.item()
-        except IndexError:
-            print(f"Predicted: class with number {predicted}, which is wrong, sorry")
-            return -1
+        img_paths = list(img_paths) if isinstance(img_paths, str) else img_paths
+        answers = [-1] * len(img_paths)
+        for i in range(len(img_paths)):
+            s = img_paths[i]
+            img_tensor = load_image(convert_to_abs_path(self.abs_path, s), self.img_size)
+            img_tensor = img_tensor.to(device=self.device)
+            output = self.vit(img_tensor)
+            _, predicted = torch.max(output, 1)
+            try:
+                if is_print:
+                    print(f"Image {i} Predicted: {self.classes[predicted.item()]}")
+                answers[i] = predicted.item()
+            except IndexError:
+                if is_print:
+                    print(f"Image {i} Predicted: {predicted}, and something went wrong")
+        return answers

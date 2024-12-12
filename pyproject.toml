@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "Visual-Transformer"
+name = "vtransformer"
 version = "0.1.0"
 description = ""
 authors = ["Sashavav <vav110011@gmail.com>"]
 readme = "README.md"
-packages = [{include = "Visual-Transformer"}]
+packages = [{include = "VisionTransformer"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
