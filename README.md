@@ -5,7 +5,7 @@
 pip install vtransformer
 ```
 ## How to use it?
-1. Configure config yaml file to work with model
+1. Configure config yaml file to work with model, example is located in VisionTransformer/config/config.yaml
 2. Module has 2 methods:
    1. run - use for training and testing model
    2. \_\_call__ - use to classify images and utilize model

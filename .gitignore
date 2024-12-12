@@ -24,3 +24,5 @@ dist
 .dvc
 download_data.py
 data.dvc
+
+VisionTransformer/config
