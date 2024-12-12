@@ -18,3 +18,9 @@ dvc-remote
 upload.py
 **draft.py
 temp
+
+dist
+.dvcignore
+.dvc
+download_data.py
+data.dvc

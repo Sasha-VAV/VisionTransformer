@@ -1,63 +1,35 @@
-# Transformer neural network, that choose between dog and cat
+# Visual transformer, based 
 ***
-## How to launch it?
-- I highly recommend to use conda env with python 310, you can get conda [here](https://www.anaconda.com/download)
+## You can import this module via
 ```shell
-conda create -n conda310 python=3.10
+pip install VisualTransformer
 ```
-- Then you need to activate it
-```shell
-conda activate conda310
-```
-- Configure python interpreter, I highly recommend to use python 3.10, 
-but you can edit Visual-Transformer/\_\_main__.py and remove raising version compatibility error
-```shell
-pip install -r requirements.txt
-```
-- You need to install poetry
-```shell
-conda install poetry
-```
-- Load all the libs
-```shell
-poetry install
-```
-- Download huggingface_hub library
-```shell
-pip install huggingface_hub
-```
-- Download weights and default images from huggingface
-```shell
-python download_data.py
-```
-- Download dvc
-```shell
-pip install dvc
-```
-- Install weights and default images
-```shell
-dvc pull
-```
-- Run module
-```shell
-python -m VisualTransformer
-```
+## How to use it?
+1. Configure config yaml file to work with model
+2. Module has 2 methods:
+   1. run - use for training and testing model
+   2. \_\_call__ - use to classify images and utilize model
+Example of the code:
+```python
+import VisualTransformer as ViT
+import hydra
+from pathlib import Path
 
-## How to configure it?
-- Move to Visual-Transformer/config/config.yaml, read inline documentation and configure it
 
-## Current stats:
-- Architecture: Visual Transformer
-- Train set size: 24000 images
-- Test set size: 1000 images
-- Max achieved **accuracy**: 99.7
+@hydra.main(config_path="path_to_your_config", config_name="name_of_your_config")
+def main(cfg):
+    abspath = str(Path(__file__).parent.resolve()) + "/"  # Get absolute path, if your config works with relative paths
+    model = ViT.Program(cfg, abspath)  # Create object of class Program to work with transformer
 
-## Max accuracy research
-- default LeNet: 74.1
-- default AlexNet: 93.9
-- AlexNet + data augmentation: 95.6
-- Visual Transformer + data augmentation: 99.7
+    model.run()  # Run config, that you wrote to train and test model
 
+    arr = ["path1", "path2", "path3"]
+    print(model(arr, False))  # Utilize model
+
+
+if __name__ == "__main__":
+    main()
+```
 ***
 ## Credits
 Thanks for the idea and pretrained models to:
