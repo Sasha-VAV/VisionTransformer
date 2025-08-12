@@ -1,4 +1,4 @@
-# Visual transformer, based 
+# Vision Transformer Implementation
 ***
 ## You can import this module via
 ```shell
@@ -35,6 +35,6 @@ if __name__ == "__main__":
 ## Credits
 Thanks for the idea and pretrained models to:
 - A huge credit to my teacher, [Alexandr Korchemnyj](https://github.com/Yessense)
-- Idea is based on science article
+- Idea is based on an article
 [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
 - I have used pretrained model from SWAG, [check the license](https://github.com/facebookresearch/SWAG/blob/main/LICENSE)
